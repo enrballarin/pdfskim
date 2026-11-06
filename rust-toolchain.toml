@@ -1,0 +1,7 @@
+# The toolchain this port is tested with. Cargo.toml declares the minimum (1.95).
+# `stable` is used rather than a pinned number so rustup never has to download a
+# second copy of the compiler; CI pins the same channel.
+[toolchain]
+channel = "stable"
+components = ["rustfmt", "clippy"]
+profile = "minimal"

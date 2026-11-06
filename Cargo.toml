@@ -1,0 +1,54 @@
+[package]
+name = "pdfskim"
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.95"
+description = "Compress PDFs and strip digital signatures from the command line, built on PdfCraft's PDF libraries"
+license = "MIT OR Apache-2.0"
+readme = "README.md"
+keywords = ["pdf", "compress", "signatures", "cli"]
+categories = ["command-line-utilities"]
+# Fill these in once the GitHub repository exists.
+# repository = "https://github.com/<user>/pdfskim"
+# homepage = "https://github.com/<user>/pdfskim"
+
+[[bin]]
+name = "pdfskim"
+path = "src/main.rs"
+
+[dependencies]
+pdfcraft-annot = { path = "_vendor/pdfcraft/crates/annot" }
+pdfcraft-cos = { path = "_vendor/pdfcraft/crates/cos" }
+pdfcraft-optimize = { path = "_vendor/pdfcraft/crates/optimize" }
+pdfcraft-organize = { path = "_vendor/pdfcraft/crates/organize" }
+anyhow = "1"
+clap = { version = "4.5", features = ["derive", "wrap_help"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+tempfile = "3"
+
+[profile.release]
+opt-level = 3
+lto = "thin"
+strip = "debuginfo"
+
+[profile.dev]
+opt-level = 1
+debug = "line-tables-only"
+
+[profile.dev.package."*"]
+opt-level = 2
+debug = false
+
+# PdfCraft patches these crates (vendor/README.md); its `crates/content`, `annot` and
+# `organize` call APIs the published releases don't have. The same patches apply here.
+# Cargo reports the hayro/hayro-cmap/hayro-interpret/hayro-postscript entries as "not used"
+# because only hayro-syntax joins this dependency graph; they stay so the patched family
+# resolves to the same versions PdfCraft pins.
+[patch.crates-io]
+hayro = { path = "_vendor/pdfcraft/vendor/hayro" }
+hayro-syntax = { path = "_vendor/pdfcraft/vendor/hayro-syntax" }
+hayro-cmap = { path = "_vendor/pdfcraft/vendor/hayro-cmap" }
+hayro-interpret = { path = "_vendor/pdfcraft/vendor/hayro-interpret" }
+hayro-postscript = { path = "_vendor/pdfcraft/vendor/hayro-postscript" }
+hayro-jbig2 = { path = "_vendor/pdfcraft/vendor/hayro-jbig2" }

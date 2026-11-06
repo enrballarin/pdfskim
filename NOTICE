@@ -1,0 +1,64 @@
+pdfskim
+Copyright (c) 2026 the pdfskim authors
+
+This product includes software developed by the ArtCraft Team and the PdfCraft
+contributors (https://github.com/storytold/pdfcraft), licensed under MIT OR
+Apache-2.0. The pinned copy lives in _vendor/pdfcraft at commit
+d7ce875dd692109789bcdad1b683ffc5a2d07dc7.
+
+The vendored, patched hayro and lopdf crates under _vendor/pdfcraft/vendor/ keep
+their own licences; see _vendor/pdfcraft/vendor/README.md and each crate's
+LICENSE-* files.
+
+Third-party material
+--------------------
+
+The vendored tree ships PdfCraft's own assets and third-party material unchanged.
+_vendor/pdfcraft/NOTICE is the authoritative list; the required notices are
+reproduced here.
+
+  Foxit standard-14 substitute fonts
+  (_vendor/pdfcraft/vendor/hayro-interpret/assets/*.pfb):
+    Copyright 2014 PDFium Authors. All rights reserved.
+    Original code copyright 2014 Foxit Software Inc.
+    BSD-3-Clause, see
+    _vendor/pdfcraft/vendor/hayro-interpret/assets/LICENSE_FOXIT.
+
+  CMap resources (bundled by hayro-cmap; character-mapping data, not visual
+  assets):
+    Copyright 1990-2023 Adobe. All rights reserved.
+    BSD-3-Clause, see _vendor/pdfcraft/licenses/CMap-LICENSE.txt.
+    Neither the name of Adobe nor the names of its contributors are used to
+    endorse or promote this product.
+
+  Lucide icons (_vendor/pdfcraft/assets/icons/) are ISC and MIT. The Windows PDF
+  file icon (_vendor/pdfcraft/assets/app-icon/pdfcraft-document.*) adapts Lucide's
+  file-text outline and is ISC AND (MIT OR Apache-2.0).
+
+  Inter, JetBrains Mono and Dancing Script typefaces
+  (_vendor/pdfcraft/assets/fonts/*.ttf) are under the SIL Open Font License 1.1,
+  each with its OFL-*.txt beside it. Dancing Script: Copyright 2016 The Dancing
+  Script Project Authors, Reserved Font Name "Dancing Script".
+
+  The CGATS001Compat-v2-micro.icc colour profile in hayro-interpret is CC0-1.0
+  (Clinton Ingram).
+
+  egui's bundled fonts, only if you build something that links eframe or egui:
+  Ubuntu Light (Ubuntu Font Licence 1.0), Hack (MIT / Bitstream Vera), Noto Emoji
+  (SIL OFL 1.1) and emoji-icon-font, Copyright (c) 2014 John Slegers (MIT). Their
+  full texts are in _vendor/pdfcraft/NOTICE.
+
+Marks
+-----
+
+PdfCraft and ArtCraft are trademarks of their owners. pdfskim is not an official
+PdfCraft or ArtCraft product. PdfCraft's ArtCraft brand assets (docs/brand/ in its
+repository) are not part of this distribution.
+
+Shipping a binary
+-----------------
+
+A pdfskim binary embeds code from the vendored tree. Ship this NOTICE with it,
+together with LICENSE-MIT, LICENSE-APACHE and the licence files under
+_vendor/pdfcraft: NOTICE, LICENSE-MIT, LICENSE-APACHE, LICENSES.toml and the
+LICENSE* files of the vendored crates.

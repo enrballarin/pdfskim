@@ -1,0 +1,17 @@
+* text=auto eol=lf
+
+# Binary fixtures and assets: never diff or convert them.
+*.pdf    binary
+*.pfb    binary
+*.ttf    binary
+*.otf    binary
+*.woff2  binary
+*.png    binary
+*.jpg    binary
+*.jpeg   binary
+*.gif    binary
+*.ico    binary
+*.icns   binary
+*.icc    binary
+
+Cargo.lock    text eol=lf
